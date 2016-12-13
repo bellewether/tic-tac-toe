@@ -8,6 +8,8 @@ describe('Game', function() {
   it("should create a gameBoard with initialized", function() {
     expect(testGame.board).toBeDefined();
     expect(testGame.board).toEqual(testBoard.board);
+    expect(testGame.board).toEqual(jasmine.any(Array));
+
   });
 
   it('should initialize the correct Player for player1', function() {

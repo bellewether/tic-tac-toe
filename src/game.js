@@ -9,12 +9,12 @@ var Game = function() {
 
 };
 
-Game.prototype.playTurn = function(location) {
-  var player = whichPlayer();
-  if (valid) {
-      location =
-  }
-};
+// Game.prototype.playTurn = function(location) {
+//   var player = whichPlayer();
+//   if (valid) {
+//       location =
+//   }
+// };
 
 var whichPlayer = function() {
   if (this.gameCounter == true) {
@@ -25,22 +25,48 @@ var whichPlayer = function() {
 };
 
 var valid = function(location) {
-  if (this.board location == null) {
+
+  if (this.board != 'X' && this.board != 'O') {
     return true
   } else {
     return false
   }
 };
 
+// var locationId = function(location) {
+//   var column = location[1];
+//   if (location[0] == 'A') {
+//     console.log(column);
+//     console.log(this.board[0][column]);
+//     return this.board[0][column]
+//   }
+// };
+
 var gameBoard = function() {
   this.board = [];
-  this.board[0] = ['top0', 'top1', 'top2'];
-  this.board[1] = ['mid0', 'mid1', 'mid2'];
-  this.board[2] = ['bot0', 'bot1', 'bot2'];
+  this.board[0] = ['A0', 'A1', 'A2'];
+  this.board[1] = ['B0', 'B1', 'B2'];
+  this.board[2] = ['C0', 'C1', 'C2'];
 
-  // this.board[0] = [null, null, null];
-  // this.board[1] = [null, null, null];
-  // this.board[2] = [null, null, null];
+  this.locationId = function(location) {
+    var column = location[1];
+    if (location[0] == 'A') {
+      console.log(column);
+      console.log(this.board[0][column]);
+      return this.board[0][column]
+    }
+  };
+  // this.boardLocation = {
+  //   'top0': [0][0],
+  //   'top1': [0][1],
+  //   'top2': [0][2],
+  //   'mid0': [1][0],
+  //   'mid1': [1][1],
+  //   'mid2': [1][2],
+  //   'bot0': [2][0],
+  //   'bot1': [2][1],
+  //   'bot2': [2][2]
+  // }
 };
 
 var Player1 = function() {
