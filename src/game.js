@@ -24,7 +24,10 @@ Game.prototype.whichPlayer = function() {
 };
 
 Game.prototype.valid = function(row,column) {
-
+  if((row > 2) || (column > 2)) {
+    console.log(row + "," + column + " is not a valid location");
+    return "that's not a valid location";
+  } else {
     var locationValue = this.board.gameBoard[row][column];
     console.log(locationValue);
     if (locationValue != 'X' && locationValue != 'O') {
@@ -32,15 +35,8 @@ Game.prototype.valid = function(row,column) {
     } else {
       return false;
     }
+  }
 };
-
-// Game.prototype.valid = function(location) {
-//   if (this.board.gameBoard.includes(location)) {
-//     return true;
-//   } else {
-//     return false;
-//   }
-// };
 
 var GameBoard = function() {
   this.gameBoard = [];
@@ -48,23 +44,6 @@ var GameBoard = function() {
   this.gameBoard[1] = [ null, 'X', null];
   this.gameBoard[2] = [ null, null, null];
 };
-
-// GameBoard.prototype.locationValue = function(location) {
-//   var column = location[1];
-//   if (location[0] == 'A') {
-//     console.log(column);
-//     console.log(this.board[0][column]);
-//     return this.board[0][column];
-//   } else if (location[0] == 'B') {
-//     console.log(column);
-//     console.log(this.board[1][column]);
-//     return this.board[1][column];
-//   } else if (location[0] == 'C') {
-//     console.log(column);
-//     console.log(this.board[2][column]);
-//     return this.board[2][column];
-//   }
-// };
 
 var Player1 = function() {
   this.marker = "X";

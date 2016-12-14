@@ -34,8 +34,21 @@ describe('Game', function() {
     });
   });
 
-  describe('Valid', function() {
+  describe('valid', function() {
+    var testGame3 = new Game ();
+    testGame3.board.gameBoard[0][2] = "X";
 
+    it('should handle an invalid location entry appropriately', function() {
+      expect(testGame3.valid(4,4)).toEqual("that's not a valid location");
+    });
+
+    it('should return true if a location is unoccupied(still equal to null)', function() {
+      expect(testGame3.valid(0,0)).toEqual(true);
+    });
+
+    it('should return false if a location is occupied by either an X or O', function() {
+      expect(testGame3.valid(0,2)).toEqual(false);
+    });
 
   });
 
