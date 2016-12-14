@@ -6,8 +6,8 @@ var Game = function() {
   this.turnCounter = 0;
   this.winner = null;
   console.log(this.board);
-  console.log(this.player1);
-  console.log(this.player2);
+  // console.log(this.player1);
+  // console.log(this.player2);
 };
 
 Game.prototype.playTurn = function(row, column) {
@@ -35,15 +35,15 @@ Game.prototype.playTurn = function(row, column) {
           this.winner = player;
           return player.name;
         } else if(this.board.hasWon() === "tie"){
-          console.log("Cat's Game");
-          // return "Cat's Game, it's a tie.";
+          console.log("Cat's Game, it's a tie.");
+          return "Cat's Game.";
         }
       }
 
     } else {
       console.log("That position is already taken, go Again");
     }
-    console.log(this.board.gameBoard);
+    console.log(this.board);
     console.log(this.gameCounter);
     console.log(this.turnCounter);
   }
@@ -60,7 +60,7 @@ Game.prototype.whichPlayer = function() {
 Game.prototype.valid = function(row,column) {
   if((row > 2) || (column > 2)) {
     console.log(row + "," + column + " is not a valid location");
-    return "that's not a valid location";
+    return false;
   } else {
     var locationValue = this.board.gameBoard[row][column];
     console.log(locationValue);
