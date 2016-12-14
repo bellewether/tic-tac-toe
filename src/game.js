@@ -36,7 +36,7 @@ Game.prototype.playTurn = function(row, column) {
           return player.name;
         } else if(this.board.hasWon() === "tie"){
           console.log("Cat's Game");
-          return "Cat's Game, it's a tie.";
+          // return "Cat's Game, it's a tie.";
         }
       }
 

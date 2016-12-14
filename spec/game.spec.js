@@ -100,6 +100,21 @@ describe('Game', function() {
     it('should return a Game Over if game is already won and you try to play a turn', function() {
       expect(testWinner.playTurn(2,2)).toEqual("Game is Over " + testWinner.winner.name + " won.");
     });
+
+    // var testTieResult = new Game();
+    // testTieResult.board.gameBoard[0][0] = "X";
+    // testTieResult.board.gameBoard[0][1] = "X";
+    // testTieResult.board.gameBoard[0][2] = "O";
+    // testTieResult.board.gameBoard[1][0] = "O";
+    // testTieResult.board.gameBoard[1][1] = "X";
+    // testTieResult.board.gameBoard[1][2] = "X";
+    // testTieResult.board.gameBoard[2][0] = "X";
+    // testTieResult.board.gameBoard[2][1] = "O";
+    // // testTieResult.board.gameBoard[2][2] = "O";
+    //
+    // it("should return a string (Cat's Game, it's a tie.) in the case of a tie", function() {
+    //   expect(testTieResult.playTurn(2,2)).toEqual("Cat's Game, it's a tie.");
+    // })
   });
 });
 
