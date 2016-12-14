@@ -31,12 +31,12 @@ Game.prototype.playTurn = function(row, column) {
 
       if(this.turnCounter >= 5) {
         if(this.board.hasWon() === true) {
-          console.log(player + " you're the Winner!!!");
+          console.log(player.name + " you're the Winner!!!");
           this.winner = player;
-          return player.name;
-        } else if(this.board.hasWon() === "tie"){
+          // return player.name;
+        } else if(this.board.hasWon() === "tie") {
           console.log("Cat's Game, it's a tie.");
-          return "Cat's Game.";
+          // return "Cat's Game.";
         }
       }
 
@@ -44,8 +44,8 @@ Game.prototype.playTurn = function(row, column) {
       console.log("That position is already taken, go Again");
     }
     console.log(this.board);
-    console.log(this.gameCounter);
-    console.log(this.turnCounter);
+    console.log("who's turn: " + this.gameCounter);
+    console.log("round number: " + this.turnCounter);
   }
 };
 
@@ -63,7 +63,7 @@ Game.prototype.valid = function(row,column) {
     return false;
   } else {
     var locationValue = this.board.gameBoard[row][column];
-    console.log(locationValue);
+    console.log("in valid, location value = " + locationValue);
     if (locationValue != 'X' && locationValue != 'O') {
       return true;
     } else {
@@ -79,24 +79,41 @@ var GameBoard = function() {
   this.gameBoard[2] = [ null, null, null];
 };
 
-GameBoard.prototype.hasWon = function () {
+GameBoard.prototype.hasWon = function() {
   // var board = this.gameBoard;
   var row0 = this.gameBoard[0];
   var row1 = this.gameBoard[1];
   var row2 = this.gameBoard[2];
 
+  //rows
   if ((row0[0] == row0[1]  && row0[1] == row0[2]) ||
       (row1[0] == row1[1]  && row1[1] == row1[2]) ||
       (row2[0] == row2[1]  && row2[1] == row2[2])) {
-    console.log("true");
+    console.log("is there a winner1: " + true);
     return true;
+
+    //columns
   } else if ((row0[0] == row1[0] && row1[0] == row2[0]) ||
               (row0[1] == row1[1] && row1[1] == row2[1]) ||
               (row0[2] == row1[2] && row1[2] == row2[2])) {
-    console.log("true");
+    console.log("00 " + row0[0]);
+    console.log("10 " + row1[0]);
+    console.log("20 " + row2[0]);
+
+    console.log("01 " + row0[1]);
+    console.log("11 " + row1[1]);
+    console.log("21 " + row2[1]);
+
+    console.log("02 " + row0[2]);
+    console.log("12 " + row1[2]);
+    console.log("22 " + row2[2]);
+
+    console.log("is there a winner2: " + true);
     return true;
+
+    //Diagonals
   } else if ((row0[0] == row1[1] && row1[1] == row2[2]) || (row0[2] == row1[1] && row1[1] == row2[0])) {
-      console.log("true");
+      console.log("is there a winner3: " + true);
       return true;
   } else {
     if(this.aTie()){

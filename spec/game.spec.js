@@ -176,6 +176,20 @@ describe('GameBoard', function() {
       expect(testColumn2.board.hasWon()).toEqual(true);
     });
 
+    //>>>>
+    var test3Nulls = new Game();
+    test3Nulls.playTurn(1,2);
+    test3Nulls.playTurn(0,0);
+    test3Nulls.playTurn(2,0);
+    test3Nulls.playTurn(1,2);
+    test3Nulls.playTurn(0,2);
+    test3Nulls.playTurn(2,2);
+    it('should return false if a player has not won but there have been 5 rounds and there are 3 nulls in a row', function() {
+      console.log(test3Nulls.winner.name);
+
+      expect(test3Nulls.board.hasWon()).toEqual(false);
+    });
+
     //Diagonals
     var testDiag1 = new Game();
     testDiag1.board.gameBoard[0][0] = "X";
