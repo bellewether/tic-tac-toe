@@ -85,35 +85,18 @@ GameBoard.prototype.hasWon = function() {
   var row1 = this.gameBoard[1];
   var row2 = this.gameBoard[2];
 
-  //rows
-  if ((row0[0] == row0[1]  && row0[1] == row0[2]) ||
-      (row1[0] == row1[1]  && row1[1] == row1[2]) ||
-      (row2[0] == row2[1]  && row2[1] == row2[2])) {
-    console.log("is there a winner1: " + true);
+  if ((row0[0] == row0[1]  && row0[1] == row0[2] && row0[2] != null) ||
+      (row1[0] == row1[1]  && row1[1] == row1[2] && row1[2] != null) ||
+      (row2[0] == row2[1]  && row2[1] == row2[2] && row2[2] != null)) {
+    console.log("Winner in a row");
     return true;
-
-    //columns
-  } else if ((row0[0] == row1[0] && row1[0] == row2[0]) ||
-              (row0[1] == row1[1] && row1[1] == row2[1]) ||
-              (row0[2] == row1[2] && row1[2] == row2[2])) {
-    console.log("00 " + row0[0]);
-    console.log("10 " + row1[0]);
-    console.log("20 " + row2[0]);
-
-    console.log("01 " + row0[1]);
-    console.log("11 " + row1[1]);
-    console.log("21 " + row2[1]);
-
-    console.log("02 " + row0[2]);
-    console.log("12 " + row1[2]);
-    console.log("22 " + row2[2]);
-
-    console.log("is there a winner2: " + true);
+  } else if ((row0[0] == row1[0] && row1[0] == row2[0] && row2[0] != null) ||
+              (row0[1] == row1[1] && row1[1] == row2[1] && row2[1] != null) ||
+              (row0[2] == row1[2] && row1[2] == row2[2] && row2[2] != null)) {
+    console.log("Winner in a column");
     return true;
-
-    //Diagonals
-  } else if ((row0[0] == row1[1] && row1[1] == row2[2]) || (row0[2] == row1[1] && row1[1] == row2[0])) {
-      console.log("is there a winner3: " + true);
+  } else if ((row0[0] == row1[1] && row1[1] == row2[2] && row2[2] != null) || (row0[2] == row1[1] && row1[1] == row2[0] && row2[0] != null)) {
+      console.log("Winner in a diagonal");
       return true;
   } else {
     if(this.aTie()){
