@@ -35,7 +35,7 @@ describe('Game', function() {
   });
 
   describe('valid', function() {
-    var testGame3 = new Game ();
+    var testGame3 = new Game();
     testGame3.board.gameBoard[0][2] = "X";
 
     it('should handle an invalid location entry appropriately', function() {
@@ -49,7 +49,41 @@ describe('Game', function() {
     it('should return false if a location is occupied by either an X or O', function() {
       expect(testGame3.valid(0,2)).toEqual(false);
     });
-
   });
 
+  describe('playTurn', function() {
+    var testGame4 = new Game();
+
+    it('should add a player1 marker (X) if the space is open', function() {
+      expect(testGame4.board.gameBoard[0][0]).toEqual(null);
+      expect(testGame4.gameCounter).toEqual(true);
+      expect(testGame4.turnCounter).toEqual(0);
+
+
+      testGame4.playTurn(0,0);
+      expect(testGame4.gameCounter).toEqual(false);
+      expect(testGame4.turnCounter).toEqual(1);
+      expect(testGame4.board.gameBoard[0][0]).toEqual('X');
+    });
+
+    it('should not add a players marker if the space is taken', function() {
+      expect(testGame4.board.gameBoard[0][0]).toEqual('X');
+      expect(testGame4.gameCounter).toEqual(false);
+
+      testGame4.playTurn(0,0);
+      expect(testGame4.gameCounter).toEqual(false);
+      expect(testGame4.turnCounter).toEqual(1);
+      expect(testGame4.board.gameBoard[0][0]).toEqual('X');
+    });
+
+    it('should add player2 marker (O) if the space is open', function() {
+      expect(testGame4.board.gameBoard[2][2]).toEqual(null);
+      expect(testGame4.gameCounter).toEqual(false);
+
+      testGame4.playTurn(2,2);
+      expect(testGame4.gameCounter).toEqual(true);
+      expect(testGame4.turnCounter).toEqual(2);
+      expect(testGame4.board.gameBoard[2][2]).toEqual('O');
+    });
+  });
 });

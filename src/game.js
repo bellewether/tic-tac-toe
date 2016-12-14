@@ -3,17 +3,32 @@ var Game = function() {
   this.player1 = new Player1();
   this.player2 = new Player2();
   this.gameCounter = true;
+  this.turnCounter = 0;
   console.log(this.board);
   console.log(this.player1);
   console.log(this.player2);
 };
 
-// Game.prototype.playTurn = function(location) {
-//   var player = whichPlayer();
-//   if (valid) {
-//       location =
-//   }
-// };
+Game.prototype.playTurn = function(row, column) {
+  // console.log(this.whichPlayer());
+  var player = this.whichPlayer();
+  // console.log(this.valid(row, column));
+  if (this.valid(row, column)) {
+    this.board.gameBoard[row][column] = player.marker;
+    if (player == this.player1) {
+      this.gameCounter = false;
+      this.turnCounter++ ;
+    } else {
+      this.gameCounter = true;
+      this.turnCounter++ ;
+    }
+  } else {
+    console.log("That position is already taken, go Again");
+  }
+  console.log(this.board.gameBoard);
+  console.log(this.gameCounter);
+  console.log(this.turnCounter);
+};
 
 Game.prototype.whichPlayer = function() {
   if (this.gameCounter === true) {
