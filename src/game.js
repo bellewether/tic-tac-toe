@@ -31,9 +31,9 @@ Game.prototype.playTurn = function(row, column) {
 
       if(this.turnCounter >= 5) {
         if(this.board.hasWon() === true) {
-          console.log(player.name + " you're the Winner!!!");
+          console.log(player + " you're the Winner!!!");
           this.winner = player;
-          // return player.name;
+          return player.name;
         } else if(this.board.hasWon() === "tie") {
           console.log("Cat's Game, it's a tie.");
           // return "Cat's Game.";
