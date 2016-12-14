@@ -55,9 +55,33 @@ Game.prototype.valid = function(row,column) {
 
 var GameBoard = function() {
   this.gameBoard = [];
-  this.gameBoard[0] = [ null, null, 'O'];
-  this.gameBoard[1] = [ null, 'X', null];
+  this.gameBoard[0] = [ null, null, null];
+  this.gameBoard[1] = [ null, null, null];
   this.gameBoard[2] = [ null, null, null];
+};
+
+GameBoard.prototype.hasWon = function () {
+  // var board = this.gameBoard;
+  var row0 = this.gameBoard[0];
+  var row1 = this.gameBoard[1];
+  var row2 = this.gameBoard[2];
+
+  if ((row0[0] == row0[1]  && row0[1] == row0[2]) ||
+      (row1[0] == row1[1]  && row1[1] == row1[2]) ||
+      (row2[0] == row2[1]  && row2[1] == row2[2])) {
+    console.log("true");
+    return true;
+  } else if ((row0[0] == row1[0] && row1[0] == row2[0]) ||
+              (row0[1] == row1[1] && row1[1] == row2[1]) ||
+              (row0[2] == row1[2] && row1[2] == row2[2])) {
+    console.log("true");
+    return true;
+  } else if ((row0[0] == row1[1] && row1[1] == row2[2]) || (row0[2] == row1[1] && row1[1] == row2[0])) {
+      console.log("true");
+      return true;
+  } else {
+    return false;
+  }
 };
 
 var Player1 = function() {

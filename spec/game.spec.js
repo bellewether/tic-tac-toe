@@ -86,4 +86,93 @@ describe('Game', function() {
       expect(testGame4.board.gameBoard[2][2]).toEqual('O');
     });
   });
+
+});
+
+describe('GameBoard', function() {
+  describe('hasWon', function() {
+    //Rows
+    var testRow0 = new Game();
+    testRow0.board.gameBoard[0][0] = "X";
+    testRow0.board.gameBoard[0][1] = "X";
+    testRow0.board.gameBoard[0][2] = "X";
+
+    it('should return true if a player has won Row0', function() {
+      expect(testRow0.board.hasWon()).toEqual(true);
+    });
+
+    var testRow1 = new Game();
+    testRow1.board.gameBoard[1][0] = "X";
+    testRow1.board.gameBoard[1][1] = "X";
+    testRow1.board.gameBoard[1][2] = "X";
+
+    it('should return true if a player has won Row1', function() {
+      expect(testRow1.board.hasWon()).toEqual(true);
+    });
+
+    var testRow2 = new Game();
+    testRow2.board.gameBoard[2][0] = "X";
+    testRow2.board.gameBoard[2][1] = "X";
+    testRow2.board.gameBoard[2][2] = "X";
+
+    it('should return true if a player has won Row2', function() {
+      expect(testRow2.board.hasWon()).toEqual(true);
+    });
+
+    //Columns
+    var testColumn0 = new Game();
+    testColumn0.board.gameBoard[0][0] = "X";
+    testColumn0.board.gameBoard[1][0] = "X";
+    testColumn0.board.gameBoard[2][0] = "X";
+
+    it('should return true if a player has won Column0', function() {
+      expect(testColumn0.board.hasWon()).toEqual(true);
+    });
+
+    var testColumn1 = new Game();
+    testColumn1.board.gameBoard[0][1] = "X";
+    testColumn1.board.gameBoard[1][1] = "X";
+    testColumn1.board.gameBoard[2][1] = "X";
+
+    it('should return true if a player has won Column1', function() {
+      expect(testColumn1.board.hasWon()).toEqual(true);
+    });
+
+    var testColumn2 = new Game();
+    testColumn2.board.gameBoard[0][2] = "X";
+    testColumn2.board.gameBoard[1][2] = "X";
+    testColumn2.board.gameBoard[2][2] = "X";
+
+    it('should return true if a player has won Column2', function() {
+      expect(testColumn2.board.hasWon()).toEqual(true);
+    });
+
+    //Diagonals
+    var testDiag1 = new Game();
+    testDiag1.board.gameBoard[0][0] = "X";
+    testDiag1.board.gameBoard[1][1] = "X";
+    testDiag1.board.gameBoard[2][2] = "X";
+
+    it('should return true if a player has won Diag1', function() {
+      expect(testDiag1.board.hasWon()).toEqual(true);
+    });
+
+    var testDiag2 = new Game();
+    testDiag2.board.gameBoard[0][2] = "X";
+    testDiag2.board.gameBoard[1][1] = "X";
+    testDiag2.board.gameBoard[2][0] = "X";
+
+    it('should return true if a player has won Diag2', function() {
+      expect(testDiag2.board.hasWon()).toEqual(true);
+    });
+
+    var hasNotWonGame = new Game();
+    hasNotWonGame.board.gameBoard[0][2] = "X";
+    hasNotWonGame.board.gameBoard[1][1] = "X";
+    hasNotWonGame.board.gameBoard[2][0] = "O";
+
+    it("should return false if a player hasn't won", function() {
+      expect(hasNotWonGame.board.hasWon()).toEqual(false);
+    });
+  });
 });
