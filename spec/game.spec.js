@@ -39,7 +39,7 @@ describe('Game', function() {
     testGame3.board.gameBoard[0][2] = "X";
 
     it('should handle an invalid location entry appropriately', function() {
-      expect(testGame3.valid(4,4)).toEqual("that's not a valid location");
+      expect(testGame3.valid(4,4)).toEqual(false);
     });
 
     it('should return true if a location is unoccupied(still equal to null)', function() {
