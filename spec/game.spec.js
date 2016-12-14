@@ -85,8 +85,22 @@ describe('Game', function() {
       expect(testGame4.turnCounter).toEqual(2);
       expect(testGame4.board.gameBoard[2][2]).toEqual('O');
     });
-  });
 
+    var testWinner = new Game();
+    testWinner.turnCounter = 4;
+    testWinner.board.gameBoard[0][0] = "X";
+    testWinner.board.gameBoard[0][1] = "X";
+
+    it('should return a winner if someone has won after their turn', function() {
+      console.log(testWinner.winner);
+      expect(testWinner.playTurn(0,2)).toEqual(testWinner.player1.name);
+      console.log(testWinner.winner);
+    });
+
+    it('should return a Game Over if game is already won and you try to play a turn', function() {
+      expect(testWinner.playTurn(2,2)).toEqual("Game is Over " + testWinner.winner.name + " won.");
+    });
+  });
 });
 
 describe('GameBoard', function() {
@@ -173,6 +187,49 @@ describe('GameBoard', function() {
 
     it("should return false if a player hasn't won", function() {
       expect(hasNotWonGame.board.hasWon()).toEqual(false);
+    });
+
+    var testReturnsTie = new Game();
+    testReturnsTie.board.gameBoard[0][0] = "X";
+    testReturnsTie.board.gameBoard[0][1] = "X";
+    testReturnsTie.board.gameBoard[0][2] = "O";
+    testReturnsTie.board.gameBoard[1][0] = "O";
+    testReturnsTie.board.gameBoard[1][1] = "X";
+    testReturnsTie.board.gameBoard[1][2] = "X";
+    testReturnsTie.board.gameBoard[2][0] = "X";
+    testReturnsTie.board.gameBoard[2][1] = "O";
+    testReturnsTie.board.gameBoard[2][2] = "O";
+
+    it("should return tie if gameboard is full and no winner", function() {
+      expect(testReturnsTie.board.hasWon()).toEqual("tie");
+    });
+
+  });
+
+  describe('aTie', function() {
+    var testYesATie = new Game();
+    testYesATie.board.gameBoard[0][0] = "X";
+    testYesATie.board.gameBoard[0][1] = "X";
+    testYesATie.board.gameBoard[0][2] = "O";
+    testYesATie.board.gameBoard[1][0] = "O";
+    testYesATie.board.gameBoard[1][1] = "X";
+    testYesATie.board.gameBoard[1][2] = "X";
+    testYesATie.board.gameBoard[2][0] = "X";
+    testYesATie.board.gameBoard[2][1] = "O";
+    testYesATie.board.gameBoard[2][2] = "O";
+
+    it("should return true if no location has a value of null therefor the gameboard is full", function() {
+      expect(testYesATie.board.aTie()).toEqual(true);
+    });
+
+    var testNotATie = new Game();
+    testNotATie.board.gameBoard[0][0] = "X";
+    testNotATie.board.gameBoard[0][1] = "X";
+    testNotATie.board.gameBoard[0][2] = null;
+
+
+    it("should return true if no location has a value of null therefor the gameboard is full", function() {
+      expect(testNotATie.board.aTie()).toEqual(false);
     });
   });
 });
