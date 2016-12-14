@@ -195,6 +195,18 @@ describe('GameBoard', function() {
       expect(testDiag2.board.hasWon()).toEqual(true);
     });
 
+    //Buggy situation
+    var findBug = new Game();
+    findBug.board.gameBoard[0][0] = "O";
+    findBug.board.gameBoard[0][2] = "O";
+    findBug.board.gameBoard[2][0] = "X";
+    findBug.board.gameBoard[2][2] = "X";
+    findBug.board.gameBoard[1][2] = "X";
+
+    it('should return false when a player hasnt won', function() {
+      expect(findBug.board.hasWon()).toEqual(false);
+    })
+
     var hasNotWonGame = new Game();
     hasNotWonGame.board.gameBoard[0][2] = "X";
     hasNotWonGame.board.gameBoard[1][1] = "X";
