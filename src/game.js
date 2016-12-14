@@ -23,9 +23,10 @@ Game.prototype.whichPlayer = function() {
   }
 };
 
-Game.prototype.valid = function(location) {
+Game.prototype.valid = function(row,column) {
 
-    var locationValue = this.board.locationValue(location);
+    var locationValue = this.board.gameBoard[row][column];
+    console.log(locationValue);
     if (locationValue != 'X' && locationValue != 'O') {
       return true;
     } else {
@@ -43,27 +44,27 @@ Game.prototype.valid = function(location) {
 
 var GameBoard = function() {
   this.gameBoard = [];
-  this.gameBoard[0] = ['A0', 'A1', 'O'];
-  this.gameBoard[1] = ['B0', 'X', 'B2'];
-  this.gameBoard[2] = ['C0', 'C1', 'C2'];
+  this.gameBoard[0] = [ null, null, 'O'];
+  this.gameBoard[1] = [ null, 'X', null];
+  this.gameBoard[2] = [ null, null, null];
 };
 
-GameBoard.prototype.locationValue = function(location) {
-  var column = location[1];
-  if (location[0] == 'A') {
-    console.log(column);
-    console.log(this.board[0][column]);
-    return this.board[0][column];
-  } else if (location[0] == 'B') {
-    console.log(column);
-    console.log(this.board[1][column]);
-    return this.board[1][column];
-  } else if (location[0] == 'C') {
-    console.log(column);
-    console.log(this.board[2][column]);
-    return this.board[2][column];
-  }
-};
+// GameBoard.prototype.locationValue = function(location) {
+//   var column = location[1];
+//   if (location[0] == 'A') {
+//     console.log(column);
+//     console.log(this.board[0][column]);
+//     return this.board[0][column];
+//   } else if (location[0] == 'B') {
+//     console.log(column);
+//     console.log(this.board[1][column]);
+//     return this.board[1][column];
+//   } else if (location[0] == 'C') {
+//     console.log(column);
+//     console.log(this.board[2][column]);
+//     return this.board[2][column];
+//   }
+// };
 
 var Player1 = function() {
   this.marker = "X";
