@@ -85,17 +85,17 @@ GameBoard.prototype.hasWon = function() {
   var row1 = this.gameBoard[1];
   var row2 = this.gameBoard[2];
 
-  if ((row0[0] == row0[1]  && row0[1] == row0[2] && row0[2] != null) ||
-      (row1[0] == row1[1]  && row1[1] == row1[2] && row1[2] != null) ||
-      (row2[0] == row2[1]  && row2[1] == row2[2] && row2[2] != null)) {
+  if ((row0[0] == row0[1]  && row0[1] == row0[2] && row0[2] !== null) ||
+      (row1[0] == row1[1]  && row1[1] == row1[2] && row1[2] !== null) ||
+      (row2[0] == row2[1]  && row2[1] == row2[2] && row2[2] !== null)) {
     console.log("Winner in a row");
     return true;
-  } else if ((row0[0] == row1[0] && row1[0] == row2[0] && row2[0] != null) ||
-              (row0[1] == row1[1] && row1[1] == row2[1] && row2[1] != null) ||
-              (row0[2] == row1[2] && row1[2] == row2[2] && row2[2] != null)) {
+  } else if ((row0[0] == row1[0] && row1[0] == row2[0] && row2[0] !== null) ||
+              (row0[1] == row1[1] && row1[1] == row2[1] && row2[1] !== null) ||
+              (row0[2] == row1[2] && row1[2] == row2[2] && row2[2] !== null)) {
     console.log("Winner in a column");
     return true;
-  } else if ((row0[0] == row1[1] && row1[1] == row2[2] && row2[2] != null) || (row0[2] == row1[1] && row1[1] == row2[0] && row2[0] != null)) {
+  } else if ((row0[0] == row1[1] && row1[1] == row2[2] && row2[2] !== null) || (row0[2] == row1[1] && row1[1] == row2[0] && row2[0] !== null)) {
       console.log("Winner in a diagonal");
       return true;
   } else {
