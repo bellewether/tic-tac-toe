@@ -10,11 +10,11 @@ var GameView = Backbone.View.extend({
   initialize: function() {
     var spaceBoardView = new SpaceBoardView({
       el: '#space-board-view'
-    })
+    });
 
     var playerView = new PlayerView({
       el: '#player-view'
-    })
+    });
 
     spaceBoardView.render();
     playerView.render();
@@ -25,12 +25,12 @@ var GameView = Backbone.View.extend({
     return this;
   },
 
-  events {
-    'click .start-game': 'startGame'
+  events: {
+    'click .start-game-button': 'startGame'
   },
 
   startGame: function() {
-    console.log("Starting a game")
+    console.log("Starting a game");
   }
 
 });

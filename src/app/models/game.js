@@ -1,14 +1,22 @@
-var Game = function() {
-  this.board = new GameBoard();
-  this.player1 = new Player1();
-  this.player2 = new Player2();
-  this.gameCounter = true;
-  this.turnCounter = 0;
-  this.winner = null;
-  console.log(this.board);
-  // console.log(this.player1);
-  // console.log(this.player2);
-};
+import Backbone from 'backbone';
+
+const Game = Backbone.Model.extend({
+  // This model should have the attributes for
+  // a single contact: name, phone number, and email.
+
+  initialize: function() {
+    this.board = new GameBoard();
+    this.player1 = new Player1();
+    this.player2 = new Player2();
+    this.gameCounter = true;
+    this.turnCounter = 0;
+    this.winner = null;
+    console.log(this.board);
+    // console.log(this.player1);
+    // console.log(this.player2);
+  },
+
+});
 
 Game.prototype.playTurn = function(row, column) {
   if(this.winner !== null) {

@@ -6,9 +6,12 @@ import GameView from 'app/views/game_view';
 
 
 $(document).ready(function() {
+  var game = new Game();
+
   var gameview = new GameView({
     el: '#game-view',
     model: game
   });
+
   gameview.render();
 });

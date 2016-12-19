@@ -8,20 +8,24 @@ var SpaceBoardView = Backbone.View.extend({
 
   initialize: function() {
 
-  };
+  },
 
-  events {
-    'click .space': 'spaceClick'
-  };
+  events: {
+    'click td': 'spaceClick'
+  },
 
-  spaceClick: function() {
-    console.log("A space clicked!")
-  };
+  spaceClick: function(event) {
+    console.log(event.currentTarget.id);
+    var id = event.currentTarget.id;
+    var marker = "X";
+
+    event.currentTarget.append(marker);
+  },
 
   render: function() {
 
     return this;
-  };
+  }
 
 });
 
