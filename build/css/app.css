@@ -6,7 +6,7 @@ body {
 }
 
 h1 {
-  font-size: 36px;
+  font-size: 28px;
 }
 
 #space-board-view {
@@ -15,8 +15,9 @@ h1 {
 }
 
 table {
-    border-collapse: collapse;
-    border-style: hidden;
+  table-layout: fixed;
+  border-collapse: collapse;
+  border-style: hidden;
 }
 
 table tr:nth-of-type(even) {
@@ -25,7 +26,8 @@ table tr:nth-of-type(even) {
 
 td {
   border: 1px solid black;
-  font-size: 100px;
-  width: 50px;
-  height: 150px;
+  font-size: 6vw;
+  width: 11vw;
+  height: 11vw;
+  padding: 0;
 }
