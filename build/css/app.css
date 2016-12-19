@@ -19,14 +19,17 @@ table {
     border-style: hidden;
 }
 
-table td {
-    border: 1px solid black;
-}
-
 table tr:nth-of-type(even) {
   background-color: transparent !important;
 }
 
 td {
-  font-size: 600%;
+  border: 1px solid black;
+  font-size: 100px;
+  width: 50px;
+  height: 150px;
+}
+
+.hide {
+  display: none;
 }

@@ -1,8 +1,14 @@
-// import Application from 'app/models/application'; **** DO WE NEED THIS????
-// import ApplicationView from 'app/views/app_view';
+import Backbone from 'backbone';
 import $ from 'jquery';
+
+import Game from 'app/models/game';
+import GameView from 'app/views/game_view';
 
 
 $(document).ready(function() {
-
+  var gameview = new GameView({
+    el: '#game-view',
+    model: game
+  });
+  gameview.render();
 });
