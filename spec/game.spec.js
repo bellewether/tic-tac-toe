@@ -60,7 +60,7 @@ describe('Game', function() {
       expect(testGame4.get('turnCounter')).toEqual(0);
 
 
-      testGame4.playTurn(0,0);
+      testGame4.playTurn(0);
       expect(testGame4.get('gameCounter')).toEqual(false);
       expect(testGame4.get('turnCounter')).toEqual(1);
       expect(testGame4.board.gameBoard[0][0]).toEqual('X');
@@ -70,7 +70,7 @@ describe('Game', function() {
       expect(testGame4.board.gameBoard[0][0]).toEqual('X');
       expect(testGame4.get('gameCounter')).toEqual(false);
 
-      testGame4.playTurn(0,0);
+      testGame4.playTurn(0);
       expect(testGame4.get('gameCounter')).toEqual(false);
       expect(testGame4.get('turnCounter')).toEqual(1);
       expect(testGame4.board.gameBoard[0][0]).toEqual('X');
@@ -80,9 +80,10 @@ describe('Game', function() {
       expect(testGame4.board.gameBoard[2][2]).toEqual(null);
       expect(testGame4.get('gameCounter')).toEqual(false);
 
-      testGame4.playTurn(2,2);
+      testGame4.playTurn(8);
       expect(testGame4.get('gameCounter')).toEqual(true);
       expect(testGame4.get('turnCounter')).toEqual(2);
+      console.log(">>>>>>>>>>>>The gameboard at [2][2] is: " + testGame4.board.gameBoard[2][2]);
       expect(testGame4.board.gameBoard[2][2]).toEqual('O');
     });
 
@@ -92,11 +93,12 @@ describe('Game', function() {
     testWinner.board.gameBoard[0][1] = "X";
 
     it('should return a winner if someone has won after their turn', function() {
-      expect(testWinner.playTurn(0,2)).toEqual(testWinner.get('player1').name);
+      expect(testWinner.playTurn(2)).toEqual(testWinner.get('player1').name);
+      console.log(">>>>>>>>>>>>" + testWinner.get('player1').name);
     });
 
     it('should return a Game Over if game is already won and you try to play a turn', function() {
-      expect(testWinner.playTurn(2,2)).toEqual("Game is Over " + testWinner.get('winner').name + " won.");
+      expect(testWinner.playTurn(8)).toEqual("Game is Over " + testWinner.get('winner').name + " won.");
     });
   });
 });
@@ -161,12 +163,12 @@ describe('GameBoard', function() {
 
     //>>>>
     var test3Nulls = new Game();
-    test3Nulls.playTurn(1,2);
-    test3Nulls.playTurn(0,0);
-    test3Nulls.playTurn(2,0);
-    test3Nulls.playTurn(1,2);
-    test3Nulls.playTurn(0,2);
-    test3Nulls.playTurn(2,2);
+    test3Nulls.playTurn(5);
+    test3Nulls.playTurn(0);
+    test3Nulls.playTurn(6);
+    test3Nulls.playTurn(5);
+    test3Nulls.playTurn(2);
+    test3Nulls.playTurn(8);
     it('should return false if a player has not won but there have been 5 rounds and there are 3 nulls in a row', function() {
       expect(test3Nulls.get('winner')).toEqual(null);
       expect(test3Nulls.board.hasWon()).toEqual(false);

@@ -16,10 +16,10 @@ var SpaceBoardView = Backbone.View.extend({
 
   spaceClick: function(event) {
     console.log(event.currentTarget.id);
-    var id = event.currentTarget.id;
     var marker = "X";
-
     event.currentTarget.append(marker);
+
+    this.trigger('spaceSelect', {model: this.model, position: event.currentTarget.id})
   },
 
   render: function() {

@@ -2,8 +2,6 @@ import Backbone from 'backbone';
 import GameBoard from 'app/models/gameboard';
 
 const Game = Backbone.Model.extend({
-  // This model should have the attributes for
-  // a single contact: name, phone number, and email.
   defaults: {
 
     player1: {
@@ -11,11 +9,13 @@ const Game = Backbone.Model.extend({
       turnCounter: true,
       name: "player1"
     },
+
     player2: {
       marker: "O",
       turnCounter: false,
       name: "player2"
     },
+
     gameCounter: true,
     turnCounter: 0,
     winner: null
@@ -24,12 +24,35 @@ const Game = Backbone.Model.extend({
 
   initialize: function(options) {
     this.board = new GameBoard();
-    // console.log(this.board);
-    // console.log(this.player1);
-    // console.log(this.player2);
   },
 
-  playTurn: function(row, column) {
+  arrayPosition: function(pos) {
+    if (pos == 0) {
+      var arrayPos = [0,0];
+    } else if (pos == 1) {
+      var arrayPos = [0,1];
+    } else if (pos == 2) {
+      var arrayPos = [0,2];
+    } else if (pos == 3) {
+      var arrayPos = [1,0];
+    } else if (pos == 4) {
+      var arrayPos = [1,1];
+    } else if (pos == 5) {
+      var arrayPos = [1,2];
+    } else if (pos == 6) {
+      var arrayPos = [2,0];
+    } else if (pos == 7) {
+      var arrayPos = [2,1];
+    } else if (pos == 8) {
+      var arrayPos = [2,2];
+    }
+    return arrayPos;
+  },
+
+  playTurn: function(position) {
+    var row = this.arrayPosition(position)[0];
+    var column = this.arrayPosition(position)[1];
+
     if(this.get('winner') !== null) {
       console.log("Game is Over " + this.get('winner').name + " won.");
       return "Game is Over " + this.get('winner').name + " won.";
