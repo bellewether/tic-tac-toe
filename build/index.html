@@ -10,20 +10,23 @@
   <body>
     <script src="/app.bundle.js" charset="utf-8"></script>
     <section id ='game-view'>
-      <h1>Tic-Tac-Toe</h1>
+      <header class="row">
+        <h1 class="large-3 large-offset-5 columns">TIC-TAC-TOE</h1>
+      </header>
 
-      <button type="button" name="start-game-button" class='start-game-button'>Start A New Game!</button>
+      <button type="button" name="start-game-button" class='column start-game-button'>Start A New Game!</button>
 
-      <section id ='player-view'>
+      <!-- <section id ='player-view'>
         <h3>Current Player: </h3>
         <h4>X</h4>
         <h4>O</h4>
-      </section>
+      </section> -->
 
-      <table id='space-board-view'>
+      <div class="row">
+        <table id='space-board-view' class='large-6 large-offset-3 columns'>
 
-      </table>
-
+        </table>
+      </div>
     </section>
 
     <script type="text/template" id='board-cells'>

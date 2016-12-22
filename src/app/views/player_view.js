@@ -7,6 +7,7 @@ import Game from 'app/models/game';
 var PlayerView = Backbone.View.extend({
 
   initialize: function() {
+    // this.template = _.template(Backbone.$('#player-view').html());
 
   },
 
