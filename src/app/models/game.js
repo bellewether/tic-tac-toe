@@ -18,7 +18,8 @@ const Game = Backbone.Model.extend({
 
     gameCounter: true,
     turnCounter: 0,
-    winner: null
+    winner: null,
+    tie: false
 
   },
 
@@ -57,9 +58,7 @@ const Game = Backbone.Model.extend({
       console.log("Game is Over " + this.get('winner').name + " won.");
       return "Game is Over " + this.get('winner').name + " won.";
     } else {
-      // console.log(this.whichPlayer());
       var player = this.whichPlayer();
-      // console.log(this.valid(row, column));
       if (this.valid(row, column)) {
         this.board.gameBoard[row][column] = player.marker;
 
@@ -73,11 +72,12 @@ const Game = Backbone.Model.extend({
 
         if(this.get('turnCounter') >= 5) {
           if(this.board.hasWon() === true) {
-            console.log(player + " you're the Winner!!!");
+            console.log(player.name + " you're the Winner!!!");
             this.set('winner', 'player');
             return player.name;
           } else if(this.board.hasWon() === "tie") {
             console.log("Cat's Game, it's a tie.");
+            this.set('tie', true)
             // return "Cat's Game.";
           }
         }
@@ -85,9 +85,6 @@ const Game = Backbone.Model.extend({
       } else {
         console.log("That position is already taken, go Again");
       }
-      // console.log(this.get('board')),
-      // console.log("who's turn: " + this.get('gameCounter'),
-      // console.log("round number: " + this.get('turnCounter')
     }
 
   },
@@ -106,7 +103,6 @@ const Game = Backbone.Model.extend({
       return false;
     } else {
       var locationValue = this.board.gameBoard[row][column];
-      console.log("in valid, location value = " + locationValue);
       if (locationValue != 'X' && locationValue != 'O') {
         return true;
       } else {

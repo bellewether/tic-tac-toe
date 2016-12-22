@@ -1,10 +1,7 @@
 import Backbone from 'backbone';
 
 const GameBoard = Backbone.Model.extend({
-  defaults: {
-
-  },
-
+  
   initialize: function() {
     this.gameBoard = [];
     this.gameBoard[0] = [ null, null, null];
